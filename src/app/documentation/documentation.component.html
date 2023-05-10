@@ -1,0 +1,74 @@
+<div class="documentation-container">
+  <div class="top-intro">
+    <div class="text-intro">
+      <h1>Documentation</h1>
+    </div>
+  </div>
+  <section class="documentation">
+    <div class="text-intro-doc">
+      <p>
+        This API follows the REST API principles and returns data in JSON
+        format. Since a client ID and an api key have to be sent in the body as
+        arguments along each request, the only supported HTTP verb is POST:
+      </p>
+    </div>
+    <div class="code-container">
+      <p>
+        curl -X <span class="emphasize">POST</span> -d
+        "clientID=yourClientID&api_key=yourApiKey" https://url-de-la-requete
+      </p>
+    </div>
+    <div class="routes-container">
+      <app-accordion-routes
+        [accordionsData]="accordionsData"
+      ></app-accordion-routes>
+    </div>
+
+    <div class="response">
+      <h3 class="table-title">Response</h3>
+
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">HTTP Status Code</th>
+            <th scope="col">Definition</th>
+            <th scope="col">Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="status">200</td>
+            <td data-label="definition">OK</td>
+            <td data-label="reason">Successful request</td>
+          </tr>
+          <tr>
+            <td data-label="status">400</td>
+            <td data-label="definition">Bad Request</td>
+            <td data-label="reason">
+              Error on client side. Invalid client ID or quota of queries
+              exhausted
+            </td>
+          </tr>
+          <tr>
+            <td data-label="status">401</td>
+            <td data-label="definition">Unauthorized</td>
+            <td data-label="reason">Invalid api key</td>
+          </tr>
+          <tr>
+            <td data-label="status">404</td>
+            <td data-label="definition">Not found</td>
+            <td data-label="reason">
+              Endpoint does not exist or client ID not found
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Response might be cached to increase response time.</p>
+    </div>
+    <div class="navigation">
+      <app-navigation [navigation]="navigation"></app-navigation>
+    </div>
+  </section>
+</div>
+
+<app-footer></app-footer>

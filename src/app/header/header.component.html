@@ -1,0 +1,29 @@
+<nav>
+  <div class="nav-container">
+    <div class="left-side">
+      <div
+        class="home"
+        routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <p>Roadster API</p>
+      </div>
+    </div>
+    <div class="right-side">
+      <div
+        class="documentation"
+        routerLink="/documentation"
+        routerLinkActive="active"
+      >
+        <p>Documentation</p>
+      </div>
+      <div class="dashboard" routerLink="/dashboard" routerLinkActive="active">
+        <p>Dashboard</p>
+      </div>
+      <div class="login" routerLink="/login" routerLinkActive="active">
+        <p>Login</p>
+      </div>
+    </div>
+  </div>
+</nav>

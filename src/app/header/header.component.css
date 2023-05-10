@@ -1,0 +1,33 @@
+nav {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  background: #000000c4;
+}
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin: auto;
+  color: #fff;
+}
+.left-side,
+.right-side {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.home,
+.documentation,
+.login,
+.dashboard {
+  padding: 0.8em;
+  border-bottom: 3px solid transparent;
+}
+.home.active,
+.documentation.active,
+.login.active,
+.dashboard.active {
+  border-bottom: 3px solid var(--basis-red);
+}

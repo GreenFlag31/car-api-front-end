@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "MontserratAlternates";
+  src: url("./assets/font/MontserratAlternates-Regular.ttf") format("truetype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "MontserratAlternates";
+  src: url("./assets/font/MontserratAlternates-Medium.ttf") format("truetype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "MontserratAlternates";
+  src: url("./assets/font/MontserratAlternates-SemiBold.ttf") format("truetype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "MontserratAlternates";
+  src: url("./assets/font/MontserratAlternates-Bold.ttf") format("truetype");
+  font-weight: 900;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MontserratAlternates", sans-serif;
+}
+:root {
+  --basis-red: #dc0000;
+  --basis-light-grey: #b6b6b6;
+}

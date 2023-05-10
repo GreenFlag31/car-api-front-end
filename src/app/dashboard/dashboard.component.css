@@ -1,0 +1,115 @@
+.dashboard-intro {
+  position: relative;
+  background: url(../../assets/pictures/rsz_dashboard.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+.dashboard-user {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  padding: 1em;
+  border-radius: 0.5em;
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0px 2px 6px 0px rgb(99 99 99 / 83%);
+}
+.dashboard-user h2 {
+  color: var(--basis-red);
+  text-align: center;
+}
+.img-gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+.img-gallery img {
+  display: block;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+  flex: 33%;
+}
+.dashboard-content {
+  margin-top: 2em;
+}
+.title-small,
+.availability {
+  padding: 0.5em 0;
+}
+
+.key-container {
+  padding: 0.625em;
+  background: lightgray;
+  border-radius: 0.3em;
+  font-weight: 600;
+}
+.emphasize {
+  font-weight: 600;
+}
+.generate-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4em;
+}
+.generate-btn-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+.quota-refresh-container i,
+.generate-btn-container i {
+  font-size: 1.4em;
+}
+.new-api-key button,
+.quota-refresh-container button {
+  display: block;
+  border: none;
+  padding: 0.625em;
+  background: var(--basis-red);
+  color: white;
+  border-radius: 0.3em;
+  cursor: pointer;
+}
+
+.new-api-key {
+  margin-top: 5em;
+}
+.info-request,
+.client-ID,
+.secret-api-key {
+  margin-top: 2em;
+}
+.quota-refresh-container {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  /* justify-content: space-between; */
+}
+.quota-refresh-container p,
+.loading-refresh-container {
+  min-width: 100px;
+}
+.loading-refresh-container {
+  display: flex;
+  justify-content: center;
+}
+.quota {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+  min-height: 38.5px;
+}
+.quota p:last-child {
+  font-size: 1.3em;
+  font-weight: 600;
+  text-align: right;
+}
+.quota-number {
+  color: var(--basis-red);
+  font-size: 1.5em;
+}

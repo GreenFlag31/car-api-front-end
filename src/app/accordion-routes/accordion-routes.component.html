@@ -1,0 +1,41 @@
+<section
+  class="accordion-routes"
+  *ngFor="let accordion of accordionsData; let i = index"
+>
+  <div class="tabs">
+    <div class="tab">
+      <input type="checkbox" [id]="'item-' + i" />
+      <label [for]="'item-' + i">
+        <div class="label-titel">
+          <p>
+            <span class="verb">POST </span>
+            <span class="emphasize">{{ accordion.route }} </span
+            ><span class="description">{{ accordion.description }}</span>
+          </p>
+        </div>
+      </label>
+      <div class="tab-content">
+        <div class="route-container">
+          <h4 class="title">Arguments</h4>
+          <hr />
+          <div class="arguments">
+            <div class="argument" *ngFor="let argument of accordion.arguments">
+              <div class="name">
+                <p class="arg">{{ argument.name }}</p>
+                <p
+                  class="caracter"
+                  [ngClass]="{ required: argument.caracter === 'required' }"
+                >
+                  {{ argument.caracter }}
+                </p>
+              </div>
+              <div class="definition">
+                <p>{{ argument.definition }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

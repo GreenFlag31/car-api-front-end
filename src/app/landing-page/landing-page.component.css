@@ -1,0 +1,200 @@
+.car-container {
+  position: relative;
+  background: url(../../assets/pictures/mustang-intro.jpg);
+  background-position: 50% 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 75vh;
+}
+
+.main-text-car {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+.introduction-api {
+  padding: 1em;
+  max-width: 800px;
+  margin: auto;
+  /* background: linear-gradient(to right, #ff0000, #000000); */
+}
+.intro-text {
+  text-align: center;
+}
+.intro-text h4 {
+  color: var(--basis-red);
+  font-size: 1.4em;
+  font-weight: 700;
+  padding: 0.8em;
+}
+.intro-text p {
+  max-width: 600px;
+  margin: auto;
+  text-align: justify;
+  line-height: 1.5;
+}
+.emphasize {
+  color: var(--basis-red);
+  font-weight: 600;
+}
+.github-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 2em;
+}
+.github-container i {
+  font-size: 1.2em;
+}
+.github-container a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.github-container a:hover {
+  color: var(--basis-red);
+}
+
+/* cards with rotation */
+.card-cars-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 35px;
+  margin-bottom: 7em;
+  min-height: 400px;
+}
+.card-wrapper {
+  min-width: 300px;
+  min-height: 400px;
+}
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  font-weight: 600;
+}
+.card-front img,
+.card-back img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  border-radius: 0.5em 0.5em 0 0;
+}
+.card-front,
+.card-back {
+  position: absolute;
+  border-radius: 0.5em;
+  cursor: pointer;
+  box-shadow: 0px 3px 5px 0px rgba(119, 119, 119, 0.75);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.card-content {
+  padding: 0.625em;
+}
+.title-card {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.title-card h4 {
+  font-size: 1.2em;
+}
+
+.caracteristic {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3em 0;
+}
+
+.card-back,
+.card:hover {
+  transform: rotateY(180deg);
+}
+
+/* Plan pricing */
+svg {
+  display: block;
+  width: 100%;
+  height: 5rem;
+}
+#header-shape-gradient {
+  --color-stop: #b00000;
+  --color-bot: #000;
+}
+.gradient-bg {
+  fill: url(#header-shape-gradient) #fff;
+}
+
+.plan-container {
+  background: linear-gradient(to right, #b00000, #000000);
+  padding: 3em;
+  padding-bottom: 6em;
+}
+.plan-card {
+  text-decoration: none;
+  display: block;
+  max-width: 500px;
+  margin: auto;
+  background: white;
+  padding: 1em;
+  border-radius: 0.5em;
+  color: #000;
+  transform: translateY(0px);
+  transition: transform 0.3s;
+}
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-card h2 {
+  text-align: center;
+  color: var(--basis-red);
+}
+
+.price p {
+  text-align: center;
+  margin: 0.5em 0;
+}
+.price span {
+  font-size: 2em;
+  font-weight: 700;
+}
+.plan-content div {
+  padding: 0.5em 0;
+}
+.plan-caracteristics div,
+.quota {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.quota {
+  gap: 0.5em;
+}
+
+.plan-content .fa-circle-check {
+  color: green;
+}
+.plan-content .fa-circle-xmark {
+  color: var(--basis-red);
+}
+hr {
+  background: lightgray;
+  border: none;
+  height: 0.05rem;
+  font-weight: bold;
+}
+.quota span {
+  font-size: 1.2em;
+  font-weight: 700;
+}

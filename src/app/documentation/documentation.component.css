@@ -1,0 +1,79 @@
+.top-intro {
+  position: relative;
+  background: url(../../assets/pictures/doc.jpg);
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+.text-intro {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+.documentation {
+  padding: 0.625em;
+  min-height: 35em;
+  max-width: 1000px;
+  margin: auto;
+}
+.text-intro-doc {
+  margin-top: 2em;
+}
+.emphasize {
+  color: var(--basis-red);
+  font-weight: 600;
+}
+.code-container {
+  margin-top: 1em;
+  background: #000;
+  color: white;
+  padding: 0.625em;
+  font-weight: 600;
+  border-radius: 0.5em;
+}
+.routes-container,
+.response {
+  margin: 5em 0;
+}
+
+/* RESPONSE */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table tr {
+  padding: 0.35em;
+}
+.response tbody tr {
+  height: 63px;
+}
+
+table th,
+table td {
+  padding: 0.625em;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+table th {
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--basis-red);
+  color: white;
+  padding: 0.8em;
+}
+tbody tr:nth-child(odd) {
+  background: #d2d2d2;
+}
+.response p {
+  margin-top: 0.5em;
+}
+.navigation {
+  margin-top: 10em;
+}

@@ -1,0 +1,21 @@
+<div
+  class="navigation-container"
+  [style.justify-content]="navigation.previous ? 'flex-start' : 'flex-end'"
+>
+  <div class="previous" *ngIf="navigation.previous">
+    <div class="text-container" [routerLink]="[navigation.previous.link]">
+      <p>
+        <i class="fa-solid fa-arrow-left-long"></i>
+        {{ navigation.previous.name }}
+      </p>
+    </div>
+  </div>
+  <div class="next" *ngIf="navigation.next">
+    <div class="text-container" [routerLink]="[navigation.next.link]">
+      <p>
+        {{ navigation.next.name }}
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </p>
+    </div>
+  </div>
+</div>
