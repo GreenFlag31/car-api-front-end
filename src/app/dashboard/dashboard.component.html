@@ -44,7 +44,7 @@
             </p>
           </div>
         </div>
-        <div class="quota">
+        <div class="quota" [ngClass]="{ bottom: user.testAccount }">
           <p>Used queries (month):</p>
           <div class="quota-refresh-container">
             <button (click)="getCurrentQuota()">Refresh</button>

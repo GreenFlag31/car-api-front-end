@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { AuthService } from '../login/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,27 +22,19 @@ export class DashboardComponent implements OnInit {
 
   keyAvailabilityMessage =
     'Please store this key in a safe place because as soon as you navigate away from this page, I will not be able to retrieve this key. API keys are hashed in database.';
-
   isLoading = false;
   newKeyGenerated = false;
   refreshIsLoading = false;
-  newKeyAvailabilityMessage =
-    this.keyAvailabilityMessage + ' Previous key has been disabled.';
-
   user$ = this.authService.user;
 
   constructor(
     private authService: AuthService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.authService.user.subscribe();
-
-    if (!this.user$['_value']) {
-      this.ref.markForCheck();
-      this.getCurrentQuota();
-    }
+    this.activatedRoute.data.subscribe();
   }
 
   getCurrentQuota() {

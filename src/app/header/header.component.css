@@ -21,7 +21,8 @@ nav {
 .home,
 .documentation,
 .login,
-.dashboard {
+.dashboard,
+.logout {
   padding: 0.8em;
   border-bottom: 3px solid transparent;
 }

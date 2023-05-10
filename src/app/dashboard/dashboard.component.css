@@ -104,6 +104,9 @@
   margin-top: 1em;
   min-height: 38.5px;
 }
+.quota.bottom {
+  margin-top: 5em;
+}
 .quota p:last-child {
   font-size: 1.3em;
   font-weight: 600;

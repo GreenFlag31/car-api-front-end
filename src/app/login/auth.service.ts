@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthResponseData, Quota } from '../shared/interfaces';
 import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,7 @@ export class AuthService {
   ErrorResponseMessage!: string;
   user = new BehaviorSubject<any>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   register(email: string, password: string) {
     return this.http
@@ -108,5 +109,12 @@ export class AuthService {
     debugger;
     this.ErrorResponseMessage = errorRes.message;
     return throwError(() => this.ErrorResponseMessage);
+  }
+
+  logOut() {
+    this.user.next(null);
+    localStorage.removeItem('user');
+    this.router.navigate(['/login']);
+    // clearTimeout(this.tokenExpirationTimer);
   }
 }
