@@ -28,10 +28,12 @@
 
         <div class="new-api-key" *ngIf="!user.testAccount">
           <div class="generate-container">
-            <p>Generate new key</p>
+            <p>Generate new key:</p>
             <div class="generate-btn-container">
               <i class="fas fa-circle-notch fa-spin" *ngIf="isLoading"></i>
-              <button (click)="generateNewApiKey()">Generate</button>
+              <button (click)="generateNewApiKey()" [disabled]="isLoading">
+                Generate
+              </button>
             </div>
           </div>
           <div class="new-key-generated" *ngIf="newKeyGenerated && !isLoading">
@@ -47,7 +49,9 @@
         <div class="quota" [ngClass]="{ bottom: user.testAccount }">
           <p>Used queries (month):</p>
           <div class="quota-refresh-container">
-            <button (click)="getCurrentQuota()">Refresh</button>
+            <button (click)="getCurrentQuota()" [disabled]="refreshIsLoading">
+              Refresh
+            </button>
             <p *ngIf="!refreshIsLoading">
               <span class="quota-number">{{ user.quota }}</span
               >/200

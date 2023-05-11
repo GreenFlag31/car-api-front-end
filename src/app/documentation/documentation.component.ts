@@ -50,19 +50,19 @@ export class DocumentationComponent implements OnInit {
           name: 'year_min',
           caracter: 'required',
           definition:
-            'Find cars from a starting year. Example: /year_of_production?year_min=1950',
+            'Find cars from a starting year. Example: /cars/year_of_production?year_min=1950',
         },
         {
           name: 'year_max',
           caracter: 'optional',
           definition:
-            'Find cars from a starting and ending period of time. Example: /year_of_production?year_min=1950&year_max=1960. If not provided, defaulted to decade.',
+            'Find cars from a starting and ending period of time. Example: /cars/year_of_production?year_min=1950&year_max=1960. If not provided, defaulted to decade.',
         },
         {
           name: 'order',
           caracter: 'optional',
           definition:
-            'Order by year of production with ascending or descending key. Example: /year_of_production?year_min=1950&year_max=1960&order=asc. Valid keys: asc or desc.',
+            'Order by year of production with ascending or descending key. Example: /cars/year_of_production?year_min=1950&year_max=1960&order=asc. Valid keys: asc or desc.',
         },
       ],
     },
@@ -104,7 +104,7 @@ export class DocumentationComponent implements OnInit {
     },
     {
       route: '/cars/weight',
-      description: 'Find cars according to a minimum speed',
+      description: 'Find cars according to a specific weight',
       arguments: [
         {
           name: 'min_weight',

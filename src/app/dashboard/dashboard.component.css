@@ -73,6 +73,11 @@
   color: white;
   border-radius: 0.3em;
   cursor: pointer;
+  transition: opacity 0.3s;
+}
+.new-api-key button:disabled,
+.quota-refresh-container button:disabled {
+  opacity: 0.8;
 }
 
 .new-api-key {
@@ -86,7 +91,7 @@
 .quota-refresh-container {
   display: flex;
   align-items: center;
-  gap: 2em;
+  gap: 1.5em;
   /* justify-content: space-between; */
 }
 .quota-refresh-container p,

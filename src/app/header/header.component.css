@@ -23,8 +23,17 @@ nav {
 .login,
 .dashboard,
 .logout {
+  cursor: pointer;
   padding: 0.8em;
   border-bottom: 3px solid transparent;
+  transition: background-color 0.3s;
+}
+.home:hover,
+.documentation:hover,
+.login:hover,
+.dashboard:hover,
+.logout:hover {
+  background: #888888c4;
 }
 .home.active,
 .documentation.active,

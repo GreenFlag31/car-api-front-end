@@ -3,15 +3,15 @@ export class User {
     public clientID: string,
     public quota: number,
     public jwt: string,
-    public jwtExpirationTime: Date,
+    public jwtExpirationTime: string,
     public testAccount?: boolean,
     public api_key?: string
   ) {}
 
-  get token(): string | null {
-    if (!this.jwtExpirationTime || this.jwtExpirationTime < new Date()) {
-      return null;
-    }
-    return this.jwt;
-  }
+  // get jwtStillAvailable(): boolean {
+  //   if (new Date(this.jwtExpirationTime) < new Date()) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 }

@@ -15,6 +15,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './login/auth-guard.service';
+import { AuthGuardLoggedInService } from './login/guard-already-connected.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,7 @@ import { AuthGuardService } from './login/auth-guard.service';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [AuthGuardService],
+  providers: [AuthGuardService, AuthGuardLoggedInService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,7 +5,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { AuthService } from '../login/auth.service';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +16,7 @@ export class DashboardComponent implements OnInit {
   endPointClientIDandQuota =
     'https://historical-car-api.web.app/api/user/clientID_quota';
   testAccountApiKey = {
-    api_key: '5876feb0-18ed-443f-82e9-23d745288586',
+    api_key: '0eb71b40-6205-439b-a78b-da3c1fb9a9b7',
   };
 
   keyAvailabilityMessage =
@@ -29,12 +28,17 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private ref: ChangeDetectorRef,
-    private activatedRoute: ActivatedRoute
+    private ref: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.data.subscribe();
+    this.authService.user.subscribe();
+
+    // refresh quota if not direct login
+    if (!this.authService.comingFromLoginNoReloadQuota) {
+      this.getCurrentQuota();
+    }
+    this.authService.comingFromLoginNoReloadQuota = false;
   }
 
   getCurrentQuota() {
@@ -57,6 +61,7 @@ export class DashboardComponent implements OnInit {
         this.refreshIsLoading = false;
         this.isLoading = false;
         this.ref.markForCheck();
+        this.authService.refreshJwtToken();
       },
     });
   }
