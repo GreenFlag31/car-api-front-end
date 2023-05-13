@@ -1,7 +1,7 @@
 .car-container {
   position: relative;
-  background: url(../../assets/pictures/mustang-intro.jpg);
-  background-position: 50% 40%;
+  background: url(../../assets/pictures/bg-landing.jpg);
+  background-position: 50% 48%;
   background-size: cover;
   background-repeat: no-repeat;
   height: 75vh;
@@ -9,16 +9,21 @@
 
 .main-text-car {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 25%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0.625em;
   color: #fff;
+}
+.main-text-car h2 {
+  font-weight: 900;
+  font-size: 1.8em;
 }
 .introduction-api {
   padding: 1em;
   max-width: 800px;
   margin: auto;
-  /* background: linear-gradient(to right, #ff0000, #000000); */
 }
 .intro-text {
   text-align: center;
@@ -27,7 +32,7 @@
   color: var(--basis-red);
   font-size: 1.4em;
   font-weight: 700;
-  padding: 0.8em;
+  padding: 0.5em;
 }
 .intro-text p {
   max-width: 600px;
@@ -42,11 +47,14 @@
 .github-container {
   display: flex;
   justify-content: center;
-  gap: 0.5em;
   margin-top: 2em;
+}
+.github {
+  padding: 0.625em;
 }
 .github-container i {
   font-size: 1.2em;
+  margin-right: 0.5em;
 }
 .github-container a {
   text-decoration: none;
@@ -55,7 +63,7 @@
   font-size: 1.1em;
   font-weight: 600;
 }
-.github-container a:hover {
+.github-container .github:hover a {
   color: var(--basis-red);
 }
 
@@ -64,14 +72,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
-  margin-top: 35px;
+  gap: 1em;
+  margin-top: 3em;
   margin-bottom: 7em;
-  min-height: 400px;
+  min-height: 440px;
 }
 .card-wrapper {
   min-width: 300px;
-  min-height: 400px;
+  min-height: 420px;
 }
 .card {
   position: relative;
@@ -81,8 +89,16 @@
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   font-weight: 600;
 }
-.card-front img,
-.card-back img {
+.card .origin {
+  align-items: center;
+  padding-bottom: 0;
+}
+.card .origin img {
+  width: 20px;
+  height: 15px;
+}
+.card-front > img,
+.card-back > img {
   display: block;
   width: 100%;
   height: 100%;
@@ -95,7 +111,7 @@
   position: absolute;
   border-radius: 0.5em;
   cursor: pointer;
-  box-shadow: 0px 3px 5px 0px rgba(119, 119, 119, 0.75);
+  box-shadow: 0px 1px 5px 0px rgba(119, 119, 119, 0.75);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -137,7 +153,7 @@ svg {
 
 .plan-container {
   background: linear-gradient(to right, #b00000, #000000);
-  padding: 3em;
+  padding: 3em 1em;
   padding-bottom: 6em;
 }
 .plan-card {

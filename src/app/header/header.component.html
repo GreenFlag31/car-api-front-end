@@ -1,35 +1,69 @@
 <nav>
-  <div class="nav-container">
+  <div
+    class="nav-container"
+    clickOutside
+    (clickOutside)="clickedOutsideHamburger()"
+  >
     <div class="left-side">
       <div
         class="home"
         routerLink="/"
         routerLinkActive="active"
+        (click)="collapseNavigationMenu()"
         [routerLinkActiveOptions]="{ exact: true }"
       >
         <p>Roadster API</p>
       </div>
     </div>
-    <div class="right-side">
+    <div class="right-side" [ngClass]="{ 'hamburger-active': isHamburgerOpen }">
+      <div class="btn-container">
+        <button
+          type="button"
+          class="nav-toggler"
+          (click)="toggleHamburgerIcon()"
+          aria-label="Hamburger icon"
+          [ngClass]="{ active: isHamburgerOpen }"
+        >
+          <span class="line l1"></span>
+          <span class="line l2"></span>
+          <span class="line l3"></span>
+        </button>
+      </div>
       <div
         class="documentation"
         routerLink="/documentation"
+        (click)="collapseNavigationMenu()"
         routerLinkActive="active"
+        [ngClass]="{ 'hamburger-active': isHamburgerOpen }"
       >
         <p>Documentation</p>
       </div>
-      <div class="dashboard" routerLink="/dashboard" routerLinkActive="active">
+      <div
+        class="dashboard"
+        routerLink="/dashboard"
+        (click)="collapseNavigationMenu()"
+        routerLinkActive="active"
+        [ngClass]="{ 'hamburger-active': isHamburgerOpen }"
+      >
         <p>Dashboard</p>
       </div>
       <div
         class="login"
         routerLink="/login"
+        (click)="collapseNavigationMenu()"
         routerLinkActive="active"
         *ngIf="!isAuthenticated"
+        [ngClass]="{ 'hamburger-active': isHamburgerOpen }"
       >
         <p>Login</p>
       </div>
-      <div class="logout" (click)="logOut()" *ngIf="isAuthenticated">
+      <div
+        class="logout"
+        (click)="logOut()"
+        (click)="collapseNavigationMenu()"
+        *ngIf="isAuthenticated"
+        [ngClass]="{ 'hamburger-active': isHamburgerOpen }"
+      >
         <p>Logout</p>
       </div>
     </div>

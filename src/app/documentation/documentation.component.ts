@@ -110,7 +110,7 @@ export class DocumentationComponent implements OnInit {
           name: 'min_weight',
           caracter: 'required',
           definition:
-            'Find cars given a minimum weight in kilograms per hundreds. Example: /cars/min_weight/1200 will return all cars whose weight is between 1200 and 1300 kg.',
+            'Find cars given a minimum weight in kilograms per hundreds. Example: /cars/min_weight/1200 will return all cars whose weight are between 1200 and 1300 kg.',
         },
         {
           name: 'order',

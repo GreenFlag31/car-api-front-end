@@ -5,8 +5,6 @@
   color: #fff;
   display: grid;
   grid-template-rows: min-content auto;
-  /* border-top: 1px solid;
-  background: linear-gradient(to right, #b00000, #000000); */
 }
 .date {
   display: flex;

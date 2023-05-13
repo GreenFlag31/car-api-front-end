@@ -55,6 +55,9 @@
 .definition {
   text-align: left;
 }
+.definition p {
+  word-break: break-word;
+}
 .argument .arg {
   font-weight: 600;
 }
@@ -73,6 +76,7 @@
   border-radius: 0.5em;
   overflow: hidden;
   box-shadow: 0px 0px 6px 0px rgb(213 213 213 / 83%);
+  border: 1px solid transparent;
 }
 .accordion-routes .tab {
   overflow: hidden;
@@ -101,6 +105,9 @@
 }
 .tab .emphasize {
   font-weight: 700;
+  width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tab .emphasize,
 .tab .description {
@@ -108,6 +115,7 @@
 }
 .tab .description {
   font-size: 0.9em;
+  display: none;
 }
 .tab label::after {
   content: "❯";
@@ -116,9 +124,6 @@
   transition: all 0.3s ease-out;
   font-weight: 600;
 }
-/* .tab label:hover { */
-/* background: rgb(30 43 155); */
-/* } */
 .tab-content {
   max-height: 0;
   padding: 0 0.625em;
@@ -126,9 +131,22 @@
   transition: all 0.3s ease-out;
 }
 input:checked ~ .tab-content {
-  max-height: 400px;
+  max-height: 770px;
   padding: 0.625em;
 }
 input:checked + label::after {
   transform: rotate(90deg);
+}
+@media (min-width: 380px) {
+  .tab .emphasize {
+    font-weight: 700;
+    width: auto;
+    overflow: visible;
+    text-overflow: initial;
+  }
+}
+@media (min-width: 700px) {
+  .tab .description {
+    display: block;
+  }
 }

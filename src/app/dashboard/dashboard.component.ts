@@ -54,10 +54,10 @@ export class DashboardComponent implements OnInit {
       this.refreshIsLoading = true;
     } else {
       this.isLoading = true;
-      this.newKeyGenerated = true;
     }
     this.authService.getCurrentQuotaOrGenNewKey(endpoint)?.subscribe({
       next: () => {
+        if (this.isLoading) this.newKeyGenerated = true;
         this.refreshIsLoading = false;
         this.isLoading = false;
         this.ref.markForCheck();

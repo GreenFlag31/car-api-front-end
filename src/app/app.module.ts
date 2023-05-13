@@ -16,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuardService } from './login/auth-guard.service';
 import { AuthGuardLoggedInService } from './login/guard-already-connected.service';
+import { ClickOutsideDirective } from './shared/click-outside.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { AuthGuardLoggedInService } from './login/guard-already-connected.servic
     AccordionRoutesComponent,
     NavigationComponent,
     DashboardComponent,
+    ClickOutsideDirective,
   ],
 
   imports: [

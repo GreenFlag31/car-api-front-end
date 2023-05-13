@@ -11,9 +11,19 @@
     </div>
   </div>
   <div class="next" *ngIf="navigation.next">
-    <div class="text-container" [routerLink]="[navigation.next.link]">
+    <div
+      class="text-container"
+      [routerLink]="[navigation.next.link]"
+      *ngIf="!isAuthenticated"
+    >
       <p>
         {{ navigation.next.name }}
+        <i class="fa-solid fa-arrow-right-long"></i>
+      </p>
+    </div>
+    <div class="text-container" routerLink="/dashboard" *ngIf="isAuthenticated">
+      <p>
+        Dashboard
         <i class="fa-solid fa-arrow-right-long"></i>
       </p>
     </div>

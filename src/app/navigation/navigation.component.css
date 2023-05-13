@@ -1,5 +1,6 @@
 .navigation-container {
   display: flex;
+  flex-direction: column;
   gap: 2em;
   margin: 2em 0;
 }
@@ -34,16 +35,9 @@
 .next i {
   margin-left: 0.3em;
 }
-@media (min-width: 500px) {
-  .previous .text-container p {
-    transform: translateX(5%);
-  }
-  .next .text-container p {
-    transform: translateX(-5%);
-  }
-}
-@media (min-width: 800px) {
-  .navigate {
+
+@media (min-width: 700px) {
+  .navigation-container {
     flex-direction: row;
   }
   .previous,

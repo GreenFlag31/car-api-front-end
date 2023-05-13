@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit {
 
   toggleTestAccount() {
     this.toggleTestA = !this.toggleTestA;
+    this.toggleLoginRegister = false;
 
     if (this.toggleTestA) {
       this.loginForm.setValue({
@@ -104,9 +105,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  toggleLogin() {
+  toggleRegister() {
     this.toggleLoginRegister = !this.toggleLoginRegister;
-
+    if (this.toggleTestA) {
+      this.loginForm.setValue({
+        email: '',
+        password: '',
+        confirmPassword: '',
+      });
+      this.toggleTestA = false;
+    }
     this.error = false;
     this.ref.markForCheck();
   }

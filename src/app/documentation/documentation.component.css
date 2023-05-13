@@ -15,12 +15,14 @@
 }
 .documentation {
   padding: 0.625em;
-  min-height: 35em;
   max-width: 1000px;
   margin: auto;
 }
 .text-intro-doc {
-  margin-top: 2em;
+  margin-top: 1em;
+}
+.text-intro-doc p {
+  text-align: justify;
 }
 .emphasize {
   color: var(--basis-red);
@@ -30,10 +32,14 @@
   margin-top: 1em;
   background: #000;
   color: white;
-  padding: 0.625em;
+  padding: 1em;
   font-weight: 600;
   border-radius: 0.5em;
 }
+.code-container p {
+  word-break: break-word;
+}
+
 .routes-container,
 .response {
   margin: 5em 0;
@@ -52,7 +58,6 @@ table tr {
 .response tbody tr {
   height: 63px;
 }
-
 table th,
 table td {
   padding: 0.625em;
@@ -76,4 +81,61 @@ tbody tr:nth-child(odd) {
 }
 .navigation {
   margin-top: 10em;
+}
+@media (max-width: 700px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    display: none;
+  }
+
+  table tr {
+    display: block;
+    margin-bottom: 0.625em;
+    box-shadow: 0px 1px 3px 0px #7e7e7eb0;
+    border: none;
+  }
+  .response tbody tr {
+    height: auto;
+  }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+    text-align: right;
+  }
+
+  table td span {
+    word-break: break-all;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    min-width: 40%;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--basis-red);
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  .response tbody tr:first-child,
+  .response tbody tr:last-child {
+    height: auto;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: white;
+  }
 }
