@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthResponseData } from '../shared/interfaces';
-import { BehaviorSubject, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, Subject, catchError, tap, throwError } from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 
@@ -20,6 +20,8 @@ export class AuthService {
   comingFromLoginNoReloadQuota = false;
   timeOutID!: number;
   user = new BehaviorSubject<any>(null);
+  inactivity = false;
+  inactivitySubject = new Subject<string>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -80,10 +82,10 @@ export class AuthService {
       testAccount ? testAccount : undefined,
       api_key === '' ? undefined : api_key
     );
+
     this.comingFromLoginNoReloadQuota = true;
 
     this.user.next(user);
-
     this.logOutInactivity(3600 * 1000);
     localStorage.setItem('user', JSON.stringify(user));
   }
@@ -112,8 +114,8 @@ export class AuthService {
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    this.ErrorResponseMessage = errorRes.error;
-    console.warn(errorRes);
+    this.ErrorResponseMessage = errorRes.error.error;
+    console.log(errorRes);
 
     return throwError(() => this.ErrorResponseMessage);
   }
@@ -145,21 +147,29 @@ export class AuthService {
     if (
       !user ||
       !(
-        new Date() < new Date(user.jwt) &&
-        Date.now() > new Date(user.jwt).getTime() - 1000 * 60 * 15
+        new Date() < new Date(user.jwtExpirationTime) &&
+        Date.now() > new Date(user.jwtExpirationTime).getTime() - 1000 * 60 * 15
       )
     ) {
       return;
     }
-
-    console.log('jwt refreshed');
 
     return this.http
       .post<any>(this.endPoints.refreshJwt, { jwt: user.jwt })
       .pipe(catchError((error) => this.handleError(error)))
       .subscribe({
         next: (response) => {
-          user = { ...user, jwt: response.newJwt };
+          const newExpirationTime = new Date(
+            Date.now() + 1000 * 60 * 60
+          ).toString();
+          user = {
+            ...user,
+            jwt: response.jwt,
+            jwtExpirationTime: newExpirationTime,
+          };
+          console.log(response);
+
+          this.logOutInactivity(3600 * 1000);
           localStorage.setItem('user', JSON.stringify(user));
         },
       });
@@ -169,6 +179,7 @@ export class AuthService {
     if (this.timeOutID) clearTimeout(this.timeOutID);
 
     this.timeOutID = window.setTimeout(() => {
+      this.inactivity = true;
       this.logOut();
     }, expirationDuration);
   }

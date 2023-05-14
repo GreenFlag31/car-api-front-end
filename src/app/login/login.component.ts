@@ -3,6 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  AfterViewInit,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { downConfirmPassword, errorNotification } from '../shared/animation';
@@ -18,7 +19,7 @@ import { AuthService } from './auth.service';
   animations: [downConfirmPassword, errorNotification],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
   testAccount = {
     email: 'test1@gmail.com',
     password: '124567i',
@@ -47,6 +48,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
+  ngAfterViewInit() {
+    if (this.authService.inactivity) {
+      this.ErrorResponseMessage = 'Logged out due to inactivity';
+      this.error = true;
+      this.ref.markForCheck();
+      this.authService.inactivity = false;
+    }
+  }
+
   onSubmit() {
     this.isLoading = true;
     const formValues = this.loginForm.value as Authentification;
@@ -56,10 +66,6 @@ export class LoginComponent implements OnInit {
         this.ErrorResponseMessage = 'Entered passwords do not match';
         this.isLoading = false;
         this.error = true;
-        setTimeout(() => {
-          this.error = false;
-          this.ref.markForCheck();
-        }, 4000);
         return;
       }
     }
@@ -89,6 +95,7 @@ export class LoginComponent implements OnInit {
   toggleTestAccount() {
     this.toggleTestA = !this.toggleTestA;
     this.toggleLoginRegister = false;
+    this.error = false;
 
     if (this.toggleTestA) {
       this.loginForm.setValue({

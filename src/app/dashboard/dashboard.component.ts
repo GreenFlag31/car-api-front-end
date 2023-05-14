@@ -33,7 +33,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user.subscribe();
-
     // refresh quota if not direct login
     if (!this.authService.comingFromLoginNoReloadQuota) {
       this.getCurrentQuota();

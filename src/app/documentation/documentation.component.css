@@ -51,7 +51,9 @@ table {
   width: 100%;
   table-layout: fixed;
 }
-
+.category-title {
+  margin-bottom: 0.5em;
+}
 table tr {
   padding: 0.35em;
 }
@@ -74,11 +76,48 @@ table th {
   padding: 0.8em;
 }
 tbody tr:nth-child(odd) {
-  background: #d2d2d2;
+  background: #e3e3e3;
 }
 .response p {
   margin-top: 0.5em;
 }
+.example .code-container {
+  margin-top: 0;
+}
+.example .code-container p:not(:last-child) {
+  margin-bottom: 0.3em;
+}
+.example .code-container span.top {
+  display: inline-block;
+  margin-top: 0.2em;
+}
+.example .code-container span {
+  display: inline-block;
+  margin-bottom: 0.2em;
+}
+.example .purple {
+  color: #c200c2;
+}
+.example .yellow {
+  color: #e2e200;
+}
+.example .blue {
+  color: #008fd9;
+}
+.note {
+  margin-top: 0.5em;
+}
+.nota-bene {
+  margin-top: 3em;
+}
+.note p,
+.nota-bene p {
+  text-align: justify;
+}
+.emphasize-note {
+  font-weight: 600;
+}
+
 .navigation {
   margin-top: 10em;
 }

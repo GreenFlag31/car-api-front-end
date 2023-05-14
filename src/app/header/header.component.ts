@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../login/auth.service';
-import { Subscription, debounceTime, fromEvent } from 'rxjs';
+import { debounceTime, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +9,7 @@ import { Subscription, debounceTime, fromEvent } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
-  userSubscription!: Subscription;
   isHamburgerOpen = false;
-  responsiveSub!: Subscription;
   // isResponsiveMode = window.innerWidth < 600;
   constructor(private authService: AuthService) {}
 
@@ -20,7 +18,7 @@ export class HeaderComponent implements OnInit {
       this.isAuthenticated = user !== null;
     });
 
-    this.responsiveSub = fromEvent(window, 'resize')
+    fromEvent(window, 'resize')
       .pipe(debounceTime(300))
       .subscribe(() => {
         // this.isResponsiveMode = window.innerWidth < 600;

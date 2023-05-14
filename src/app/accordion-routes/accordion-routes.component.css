@@ -131,8 +131,20 @@
   transition: all 0.3s ease-out;
 }
 input:checked ~ .tab-content {
-  max-height: 770px;
+  max-height: 360px;
   padding: 0.625em;
+}
+input:checked#item-2 ~ .tab-content {
+  max-height: 750px;
+}
+input:checked#item-3 ~ .tab-content {
+  max-height: 500px;
+}
+input:checked#item-4 ~ .tab-content {
+  max-height: 540px;
+}
+input:checked#item-5 ~ .tab-content {
+  max-height: 900px;
 }
 input:checked + label::after {
   transform: rotate(90deg);

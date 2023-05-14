@@ -110,13 +110,19 @@ export class DocumentationComponent implements OnInit {
           name: 'min_weight',
           caracter: 'required',
           definition:
-            'Find cars given a minimum weight in kilograms per hundreds. Example: /cars/min_weight/1200 will return all cars whose weight are between 1200 and 1300 kg.',
+            'Find cars given a minimum weight in kilograms per hundreds by default. Example: /cars/weight?min_weight=1200 will return all cars whose weight is between 1200 and 1300 kg.',
+        },
+        {
+          name: 'max_weight',
+          caracter: 'optional',
+          definition:
+            'Find cars given a minimum and maximum weight. Example: /cars/weight?min_weight=1200&max_weight=1400 will return all cars whose weight is between 1200 and 1400 kg.',
         },
         {
           name: 'order',
           caracter: 'optional',
           definition:
-            'Order by weight with ascending or descending key. Example: /cars/min_weight/1200&order=asc. Valid keys: asc or desc.',
+            'Order by weight with ascending or descending key. Example: /cars/weight?min_weight=1200&max_weight=1400&order=asc. Valid keys: asc or desc.',
         },
       ],
     },

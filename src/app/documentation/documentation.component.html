@@ -26,7 +26,7 @@
     </div>
 
     <div class="response">
-      <h3 class="table-title">Response</h3>
+      <h3 class="category-title">Response</h3>
 
       <table>
         <thead>
@@ -65,6 +65,66 @@
         </tbody>
       </table>
       <p>Response might be cached to increase response time.</p>
+    </div>
+    <div class="example">
+      <h3 class="category-title">Example</h3>
+      <div class="code-container">
+        <p>
+          <span class="purple">const&nbsp;</span>
+          <span class="blue">baseURL</span> =
+          'https://historical-car-api.web.app/cars?order=asc'<br />
+        </p>
+        <p>
+          <span class="purple">const&nbsp;</span>
+          <span class="blue">body</span> = &#123; <br />
+          <span class="top"
+            ><span class="yellow">&nbsp;&nbsp;method</span>: 'POST',</span
+          >
+          <br />
+
+          <span
+            ><span class="yellow">&nbsp;&nbsp;headers</span>: &#123;&nbsp;
+            'Content-Type': 'application/json' &nbsp;&#125;,</span
+          >
+          <br />
+          <span>
+            <span class="yellow">&nbsp;&nbsp;body</span>: JSON.<span
+              class="yellow"
+              >stringify</span
+            >(&#123;&nbsp;&nbsp;'clientID': 'yourClientID', 'api_key':
+            'yourApiKey'&nbsp;&nbsp;&#125;)
+          </span>
+          <br />
+        </p>
+        <p>
+          <span class="purple">const&nbsp;</span>
+          <span class="blue">request</span> =
+          <span class="purple">await</span> fetch(baseURL, body) <br />
+        </p>
+        <p>
+          <span class="purple">const&nbsp;</span>
+          <span class="blue">response</span> =
+          <span class="purple">await</span> request.<span class="yellow"
+            >json</span
+          >() <br />
+        </p>
+        <p>console.<span class="yellow">log</span>(response)</p>
+      </div>
+      <div class="note">
+        <p>
+          The key <span class="emphasize-note">headers</span> with the value
+          <span class="emphasize-note">application/json</span> is necessary to
+          let the server knows he will receive JSON.
+        </p>
+      </div>
+    </div>
+    <div class="nota-bene">
+      <p>
+        This API is deployed on Google Cloud which optimises ressources on the
+        server. Therefore, if not used during a certain amount of time, first
+        API call may lead to a 'cold start', i.e. a slow start, which means that
+        it might take a certain time. It then goes faster with next calls.
+      </p>
     </div>
     <div class="navigation">
       <app-navigation [navigation]="navigation"></app-navigation>
