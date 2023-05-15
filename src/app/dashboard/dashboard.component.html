@@ -62,10 +62,12 @@
               bottom: user.testAccount
             }"
           >
-            <p>Used queries (month):</p>
+            <div class="date-container">
+              <p>Used queries:</p>
+              <span class="until">Until {{ user.dateUntil }}</span>
+            </div>
             <div class="quota-refresh-container">
-              <button (click)="getCurrentQuota()">
-                <!-- [disabled]="refreshIsLoading" -->
+              <button (click)="getCurrentQuota()" [disabled]="refreshIsLoading">
                 Refresh
               </button>
               <p *ngIf="!refreshIsLoading">

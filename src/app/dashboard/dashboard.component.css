@@ -138,6 +138,11 @@
   color: var(--basis-red);
   font-size: 1.5em;
 }
+.date-container .until {
+  color: #b1b1b1;
+  font-size: 0.9em;
+  font-weight: 600;
+}
 
 @media (min-width: 650px) {
   .img-gallery img:nth-child(n + 4) {

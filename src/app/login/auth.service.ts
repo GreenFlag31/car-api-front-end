@@ -38,6 +38,7 @@ export class AuthService {
             response.clientID,
             response.quota,
             response.jwt,
+            response.start,
             new Date(Date.now() + 1000 * 60 * 60).toString(),
             undefined, // no testAccount at register
             response.api_key
@@ -59,6 +60,7 @@ export class AuthService {
             response.clientID,
             response.quota,
             response.jwt,
+            response.start,
             new Date(Date.now() + 1000 * 60 * 60).toString(),
             response.testAccount // no api key at login
           );
@@ -70,14 +72,20 @@ export class AuthService {
     clientID: string,
     quota: number,
     jwt: string,
+    start: string,
     jwtExpirationTime: string,
     testAccount = false,
     api_key = ''
   ) {
+    let dateUntil: Date | string = new Date(start);
+    dateUntil.setMonth(dateUntil.getMonth() + 1);
+    dateUntil = new Date(dateUntil).toLocaleDateString();
+
     let user = new User(
       clientID,
       quota,
       jwt,
+      dateUntil,
       jwtExpirationTime,
       testAccount ? testAccount : undefined,
       api_key ? api_key : undefined
@@ -131,6 +139,7 @@ export class AuthService {
       user.clientID,
       user.quota,
       user.jwt,
+      user.dateUntil,
       user.jwtExpirationTime,
       user.testAccount,
       user.api_key

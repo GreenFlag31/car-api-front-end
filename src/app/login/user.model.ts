@@ -3,6 +3,7 @@ export class User {
     public clientID: string,
     public quota: number,
     public jwt: string,
+    public dateUntil: string,
     public jwtExpirationTime: string,
     public testAccount?: boolean,
     public api_key?: string,

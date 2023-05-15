@@ -31,6 +31,7 @@ export interface AuthResponseData {
   clientID: string;
   quota: number;
   jwt: string;
+  start: string;
   jwtExpirationTime: string;
   testAccount?: boolean;
   api_key?: string;
