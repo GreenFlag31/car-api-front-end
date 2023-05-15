@@ -96,13 +96,13 @@ tbody tr:nth-child(odd) {
   margin-bottom: 0.2em;
 }
 .example .purple {
-  color: #c200c2;
+  color: var(--basis-red);
 }
 .example .yellow {
-  color: #e2e200;
+  color: #cdcd00;
 }
 .example .blue {
-  color: #008fd9;
+  color: #9b9b9b;
 }
 .note {
   margin-top: 0.5em;

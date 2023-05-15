@@ -26,7 +26,11 @@
               {{ keyAvailabilityMessage }}
             </p>
           </div>
-          <div class="new-api-key" *ngIf="!user.testAccount">
+          <div
+            class="new-api-key"
+            [ngClass]="{ new: newKeyGenerated }"
+            *ngIf="!user.testAccount && !user.api_key"
+          >
             <div class="generate-container">
               <p>Generate new key:</p>
               <div class="generate-btn-container">
@@ -60,7 +64,8 @@
           >
             <p>Used queries (month):</p>
             <div class="quota-refresh-container">
-              <button (click)="getCurrentQuota()" [disabled]="refreshIsLoading">
+              <button (click)="getCurrentQuota()">
+                <!-- [disabled]="refreshIsLoading" -->
                 Refresh
               </button>
               <p *ngIf="!refreshIsLoading">

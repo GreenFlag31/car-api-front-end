@@ -5,13 +5,7 @@ export class User {
     public jwt: string,
     public jwtExpirationTime: string,
     public testAccount?: boolean,
-    public api_key?: string
+    public api_key?: string,
+    public new_api_key?: string
   ) {}
-
-  // get jwtStillAvailable(): boolean {
-  //   if (new Date(this.jwtExpirationTime) < new Date()) {
-  //     return false;
-  //   }
-  //   return true;
-  // }
 }

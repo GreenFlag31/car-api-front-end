@@ -80,7 +80,7 @@ export class AuthService {
       jwt,
       jwtExpirationTime,
       testAccount ? testAccount : undefined,
-      api_key === '' ? undefined : api_key
+      api_key ? api_key : undefined
     );
 
     this.comingFromLoginNoReloadQuota = true;
@@ -101,13 +101,16 @@ export class AuthService {
       .pipe(
         catchError((error) => this.handleError(error)),
         tap((response) => {
-          const responseWithNewData = {
+          let responseWithNewData = {
             ...user,
             ...(endpoint.includes('quota')
               ? { quota: response.quota }
               : { new_api_key: response.new_api_key }),
           };
 
+          if (response.new_api_key) {
+            localStorage.setItem('user', JSON.stringify(responseWithNewData));
+          }
           this.user.next(responseWithNewData);
         })
       );
@@ -187,6 +190,8 @@ export class AuthService {
   logOut() {
     this.user.next(null);
     localStorage.removeItem('user');
-    this.router.navigate(['/login']);
+    if (this.router.url.includes('dashboard')) {
+      this.router.navigate(['/login']);
+    }
   }
 }

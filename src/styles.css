@@ -13,11 +13,7 @@
   src: url("./assets/font/MontserratAlternates-SemiBold.ttf") format("truetype");
   font-weight: 700;
 }
-@font-face {
-  font-family: "MontserratAlternates";
-  src: url("./assets/font/MontserratAlternates-Bold.ttf") format("truetype");
-  font-weight: 900;
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -27,4 +23,13 @@
 :root {
   --basis-red: #dc0000;
   --basis-light-grey: #b6b6b6;
+}
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(203, 203, 203);
+  border-radius: 10px;
 }

@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
 } from '@angular/core';
 import { AuthService } from '../login/auth.service';
+import { User } from '../login/user.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +14,7 @@ import { AuthService } from '../login/auth.service';
   styleUrls: ['./dashboard.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   endPointClientIDandQuota =
     'https://historical-car-api.web.app/api/user/clientID_quota';
   testAccountApiKey = {
@@ -20,7 +22,7 @@ export class DashboardComponent implements OnInit {
   };
 
   keyAvailabilityMessage =
-    'Please store this key in a safe place because as soon as you navigate away from this page, I will not be able to retrieve this key. API keys are hashed in database.';
+    'Please store this key in a safe place because as soon as you navigate away from this page, I will not be able to retrieve this key. API keys are hashed in database and irretrievable.';
   isLoading = false;
   newKeyGenerated = false;
   refreshIsLoading = false;
@@ -63,5 +65,16 @@ export class DashboardComponent implements OnInit {
         this.authService.refreshJwtToken();
       },
     });
+  }
+
+  ngOnDestroy() {
+    // if new registered user
+    let user: User = JSON.parse(localStorage.getItem('user')!);
+    if (!user?.api_key && !user?.new_api_key) return;
+
+    delete user.api_key;
+    delete user.new_api_key;
+    this.authService.user.next(user);
+    localStorage.setItem('user', JSON.stringify(user));
   }
 }

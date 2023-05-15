@@ -62,7 +62,7 @@ export class DocumentationComponent implements OnInit {
           name: 'order',
           caracter: 'optional',
           definition:
-            'Order by year of production with ascending or descending key. Example: /cars/year_of_production?year_min=1950&year_max=1960&order=asc. Valid keys: asc or desc.',
+            'Order by year of production with ascending or descending key. Example: /cars/year_of_production?year_min=1950&order=asc. Valid keys: asc or desc.',
         },
       ],
     },
@@ -122,7 +122,7 @@ export class DocumentationComponent implements OnInit {
           name: 'order',
           caracter: 'optional',
           definition:
-            'Order by weight with ascending or descending key. Example: /cars/weight?min_weight=1200&max_weight=1400&order=asc. Valid keys: asc or desc.',
+            'Order by weight with ascending or descending key. Example: /cars/weight?min_weight=1200&order=asc. Valid keys: asc or desc.',
         },
       ],
     },
