@@ -19,6 +19,7 @@
 .main-text-car h2 {
   font-weight: 900;
   font-size: 1.8em;
+  text-align: center;
 }
 .introduction-api {
   padding: 1em;

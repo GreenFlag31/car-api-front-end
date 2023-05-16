@@ -47,7 +47,9 @@
 .availability {
   padding: 0.5em 0;
 }
-
+.availability {
+  text-align: justify;
+}
 .key-container {
   padding: 0.625em;
   background: #b1b1b1;
@@ -99,6 +101,9 @@
 .client-ID,
 .secret-api-key {
   margin-top: 2em;
+}
+.info-request {
+  text-align: justify;
 }
 .quota-refresh-container {
   display: flex;

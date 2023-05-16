@@ -22,6 +22,9 @@
   align-self: flex-end;
   margin: 0 auto;
 }
+.made p {
+  text-align: center;
+}
 .contact {
   display: flex;
   justify-content: center;
