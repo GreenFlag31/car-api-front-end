@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Accordion } from '../shared/interfaces';
 
 @Component({
@@ -6,10 +6,6 @@ import { Accordion } from '../shared/interfaces';
   templateUrl: './accordion-routes.component.html',
   styleUrls: ['./accordion-routes.component.css'],
 })
-export class AccordionRoutesComponent implements OnInit {
+export class AccordionRoutesComponent {
   @Input() accordionsData!: Accordion[];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

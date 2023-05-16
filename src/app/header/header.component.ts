@@ -10,7 +10,6 @@ import { debounceTime, fromEvent } from 'rxjs';
 export class HeaderComponent implements OnInit {
   isAuthenticated = false;
   isHamburgerOpen = false;
-  // isResponsiveMode = window.innerWidth < 600;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
     fromEvent(window, 'resize')
       .pipe(debounceTime(300))
       .subscribe(() => {
-        // this.isResponsiveMode = window.innerWidth < 600;
         this.isHamburgerOpen = false;
       });
   }

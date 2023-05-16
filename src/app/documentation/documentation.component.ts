@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Accordion, Navigation } from '../shared/interfaces';
 
 @Component({
@@ -6,7 +6,7 @@ import { Accordion, Navigation } from '../shared/interfaces';
   templateUrl: './documentation.component.html',
   styleUrls: ['./documentation.component.css'],
 })
-export class DocumentationComponent implements OnInit {
+export class DocumentationComponent {
   accordionsData: Accordion[] = [
     {
       route: '/cars',
@@ -137,8 +137,4 @@ export class DocumentationComponent implements OnInit {
       link: '/login',
     },
   };
-
-  constructor() {}
-
-  ngOnInit() {}
 }
