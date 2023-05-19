@@ -15,8 +15,6 @@ import { User } from '../login/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit, OnDestroy {
-  endPointClientIDandQuota =
-    'https://historical-car-api.web.app/api/user/clientID_quota';
   testAccountApiKey = {
     api_key: '0eb71b40-6205-439b-a78b-da3c1fb9a9b7',
   };
@@ -34,7 +32,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.authService.user.subscribe();
     // refresh quota if not direct login
     if (!this.authService.comingFromLoginNoReloadQuota) {
       this.getCurrentQuota();

@@ -11,8 +11,7 @@ export class AuthGuardLoggedInService implements CanActivate {
   canActivate(): boolean | UrlTree {
     if (this.authService.user['_value']) {
       return this.router.createUrlTree(['/dashboard']);
-    } else {
-      return true;
     }
+    return true;
   }
 }

@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AuthResponseData } from '../shared/interfaces';
-import { BehaviorSubject, Subject, catchError, tap, throwError } from 'rxjs';
+import { AuthResponseData, NewJwt, NewKey, Quota } from '../shared/interfaces';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  Subscription,
+  catchError,
+  tap,
+  throwError,
+} from 'rxjs';
 import { User } from './user.model';
 import { Router } from '@angular/router';
 
@@ -19,13 +27,13 @@ export class AuthService {
   ErrorResponseMessage!: string;
   comingFromLoginNoReloadQuota = false;
   timeOutID!: number;
-  user = new BehaviorSubject<any>(null);
+  user = new BehaviorSubject<User | null>(null);
   inactivity = false;
   inactivitySubject = new Subject<string>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  register(email: string, password: string) {
+  register(email: string, password: string): Observable<AuthResponseData> {
     return this.http
       .post<AuthResponseData>(this.endPoints.register, {
         email,
@@ -47,7 +55,7 @@ export class AuthService {
       );
   }
 
-  login(email: string, password: string) {
+  login(email: string, password: string): Observable<AuthResponseData> {
     return this.http
       .post<AuthResponseData>(this.endPoints.login, {
         email,
@@ -98,25 +106,27 @@ export class AuthService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  getCurrentQuotaOrGenNewKey(endpoint: string) {
+  getCurrentQuotaOrGenNewKey(
+    endpoint: string
+  ): Observable<Quota | NewKey> | undefined {
     const user: User = JSON.parse(localStorage.getItem('user')!);
     if (!user) return;
 
     return this.http
-      .post<any>(endpoint, {
+      .post<Quota | NewKey>(endpoint, {
         jwt: user.jwt,
       })
       .pipe(
         catchError((error) => this.handleError(error)),
         tap((response) => {
-          let responseWithNewData = {
+          const responseWithNewData = {
             ...user,
-            ...(endpoint.includes('quota')
+            ...('quota' in response
               ? { quota: response.quota }
               : { new_api_key: response.new_api_key }),
           };
 
-          if (response.new_api_key) {
+          if ('new_api_key' in response) {
             localStorage.setItem('user', JSON.stringify(responseWithNewData));
           }
           this.user.next(responseWithNewData);
@@ -124,9 +134,8 @@ export class AuthService {
       );
   }
 
-  private handleError(errorRes: HttpErrorResponse) {
+  private handleError(errorRes: HttpErrorResponse): Observable<never> {
     this.ErrorResponseMessage = errorRes.error.error;
-    console.log(errorRes);
 
     return throwError(() => this.ErrorResponseMessage);
   }
@@ -152,7 +161,7 @@ export class AuthService {
     this.user.next(currentUser);
   }
 
-  refreshJwtToken() {
+  refreshJwtToken(): Subscription | undefined {
     let user: User = JSON.parse(localStorage.getItem('user')!);
 
     // if request not 15 mins before expiration return
@@ -167,7 +176,7 @@ export class AuthService {
     }
 
     return this.http
-      .post<any>(this.endPoints.refreshJwt, { jwt: user.jwt })
+      .post<NewJwt>(this.endPoints.refreshJwt, { jwt: user.jwt })
       .pipe(catchError((error) => this.handleError(error)))
       .subscribe({
         next: (response) => {
@@ -176,10 +185,9 @@ export class AuthService {
           ).toString();
           user = {
             ...user,
-            jwt: response.jwt,
+            jwt: response.new_jwt,
             jwtExpirationTime: newExpirationTime,
           };
-          console.log(response);
 
           this.logOutInactivity(3600 * 1000);
           localStorage.setItem('user', JSON.stringify(user));
